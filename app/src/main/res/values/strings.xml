@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LetsMeet</string>
+    <string name="title_activity_maps">LetsMeet</string>
+    <string name="app_id">336782863167022</string>
+    <string name = "drawer_open">Drawer Opened</string>
+    <string name = "drawer_close">Drawer Closed</string>
+    <string name="error_dialog_title">Error</string>
+    <string name="error_dialog_button_text">OK</string>
+    <string name="facebook_app_id">336782863167022</string>
+</resources>
+
+
+
+
+
+
+
+
