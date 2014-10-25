@@ -21,9 +21,12 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 
 //PARSE
+import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 //PARSE
 
 
@@ -31,6 +34,8 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Colin on 2014-09-20.
@@ -68,6 +73,28 @@ public class MainActivity extends Activity {
         latLonObject.put("Lon", 50);
         latLonObject.saveInBackground();
         //PARSE
+
+        //TODO add progress message
+        List<String> permissions = Arrays.asList("public_profile", "user_friends", "user_about_me",
+                "user_relationships", "user_birthday", "user_location");
+        ParseFacebookUtils.logIn(permissions, this, new LogInCallback() {
+
+            @Override
+            public void done(ParseUser user, com.parse.ParseException e) {
+                if (user == null) {
+                    Log.d("NULL",
+                            "Uh oh. The user cancelled the Facebook login.");
+                } else if (user.isNew()) {
+                    Log.d("NEW",
+                            "User signed up and logged in through Facebook!");
+                  /*  showUserDetailsActivity();*/
+                } else {
+                    Log.d("LOGGED IN",
+                            "User logged in through Facebook!");
+                    /*showUserDetailsActivity();*/
+                }
+            }
+        });
 
 
         try {

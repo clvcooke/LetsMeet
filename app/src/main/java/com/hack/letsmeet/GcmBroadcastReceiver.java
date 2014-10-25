@@ -16,6 +16,11 @@ import org.json.JSONObject;
 /**
  * Created by bilal on 2014-09-21.
  */
+
+/*
+
+* Changed by Colin, 2014-10-23
+ */
 public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
     public static final int NOTIFICATION_ID = 1;
 
@@ -49,9 +54,7 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
     }
 
     private void sendNotification(Context context, String msg, String meeting) {
-        NotificationManager mNotificationManager;
-        mNotificationManager = (NotificationManager)
-                context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager mNotificationManager= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         Intent intent = new Intent(context, MapsActivity.class);
         intent.setAction("com.hack.letsmeet.MeetupInitiated");
@@ -65,7 +68,7 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(android.R.drawable.ic_menu_add)
-                        .setContentTitle("GCM Notification")
+                        .setContentTitle("USER wants to meet")
                         .setStyle(new NotificationCompat.BigTextStyle()
                                 .bigText(msg))
                         .setContentText(msg);
